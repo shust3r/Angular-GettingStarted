@@ -1,8 +1,7 @@
 <div class="card">
     <div class="card-header">
-        Product List
+        {{pageTitle}}
     </div>
-
     <div class='card-body'>
         <div class='row'>
             <div class='col-md-2'>Filter by:</div>
@@ -16,7 +15,7 @@
             </div>
         </div>
         <div class='table-responsive'>
-            <table class='table'>
+            <table class='table' *ngIf="products.length">
                 <thead>
                     <tr>
                         <th>
@@ -32,7 +31,14 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    <tr *ngFor="let prod of products">
+                        <td></td>
+                        <td>{{prod.productName}}</td>
+                        <td>{{prod.productCode}}</td>
+                        <td>{{prod.releaseDate}}</td>
+                        <td>{{prod.price}}</td>
+                        <td>{{prod.starRating}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
