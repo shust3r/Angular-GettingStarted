@@ -8,6 +8,8 @@ export class ProductListComponent {
     pageTitle: string = "Product List";
     imageWidth: number = 50;
     imageMargin: number = 2;
+    isShowingImage: boolean = false;
+    listFilter: string = "cart";
     products: any[] = [
         {
             "productId": 2,
@@ -30,4 +32,8 @@ export class ProductListComponent {
             "imageUrl": "assets/images/hammer.png"
         }
     ];
+
+    toggleImage(): void {
+        this.isShowingImage = !this.isShowingImage;
+    }
 }
