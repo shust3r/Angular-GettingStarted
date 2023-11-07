@@ -1,21 +1,31 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
 
 @Component({
     selector: 'pm-products',
-    templateUrl: './product-list.component.html'
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent  implements OnInit{
     pageTitle: string = "Product List";
     imageWidth: number = 50;
     imageMargin: number = 2;
     isShowingImage: boolean = false;
-    listFilter: string = "cart";
+
+    private _listFilter: string = "";
+    get listFilter(): string {
+        return this._listFilter;
+    }
+    set listFilter(value: string) {
+        this._listFilter = value;
+        console.log("In setter", value);
+    }
+
     products: IProduct[] = [
         {
             "productId": 2,
             "productName": "Some Cart",
-            "productCode": "Some-CODE",
+            "productCode": "Some-1CODE",
             "releaseDate": "June 28, 2023",
             "description": "Some descr",
             "price": 29.01,
@@ -25,7 +35,7 @@ export class ProductListComponent {
         {
             "productId": 4,
             "productName": "Other Hammer",
-            "productCode": "Other-CODE",
+            "productCode": "Other-2CODE",
             "releaseDate": "July 2, 2023",
             "description": "Other descr",
             "price": 29.99,
@@ -36,5 +46,9 @@ export class ProductListComponent {
 
     toggleImage(): void {
         this.isShowingImage = !this.isShowingImage;
+    }
+
+    ngOnInit(): void {
+        this._listFilter = "cart";
     }
 }
