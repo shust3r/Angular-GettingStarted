@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 //BrowserModule - for the features that needs to run this app in a browser
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 //AppCompon
 import { AppComponent } from './app.component';
@@ -20,7 +21,8 @@ import { StarComponent } from './shared/star.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
