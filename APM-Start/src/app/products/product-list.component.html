@@ -6,8 +6,7 @@
         <div class='row'>
             <div class='col-md-2'>Filter by:</div>
             <div class='col-md-4'>
-                <input type='text' 
-                [(ngModel)]="listFilter"/>
+                <input type='text' [(ngModel)]="listFilter" />
             </div>
         </div>
         <div class='row'>
@@ -20,9 +19,8 @@
                 <thead>
                     <tr>
                         <th>
-                            <button class='btn btn-primary'
-                            (click)="toggleImage()">
-                            {{isShowingImage ? "Hide" : "Show"}} Image
+                            <button class='btn btn-primary' (click)="toggleImage()">
+                                {{isShowingImage ? "Hide" : "Show"}} Image
                             </button>
                         </th>
                         <th>Product</th>
@@ -35,17 +33,15 @@
                 <tbody>
                     <tr *ngFor="let prod of filteredProducts">
                         <td>
-                            <img *ngIf="isShowingImage"
-                                [src]="prod.imageUrl"
-                                [title]="prod.productName"
-                                [style.width.px]="imageWidth"
-                                [style.margin.px]="imageMargin">
+                            <img *ngIf="isShowingImage" [src]="prod.imageUrl" [title]="prod.productName"
+                                [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
                         </td>
                         <td>{{prod.productName}}</td>
                         <td>{{prod.productCode | lowercase | convertToSpaces:"-"}}</td>
                         <td>{{prod.releaseDate}}</td>
                         <td>{{prod.price | currency:"USD":"symbol":"1.2-2"}}</td>
-                        <td>{{prod.starRating}}</td>
+                        <td><pm-star [rating]="prod.starRating"
+                            (ratingClicked)="onRatingClicked($event)"></pm-star></td>
                     </tr>
                 </tbody>
             </table>
