@@ -4,11 +4,10 @@ import { ProductService } from "./product.service";
 import { Subscription } from "rxjs";
 
 @Component({
-    selector: 'pm-products',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent  implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit, OnDestroy {
     pageTitle: string = "Product List";
     imageWidth: number = 50;
     imageMargin: number = 2;
@@ -29,7 +28,7 @@ export class ProductListComponent  implements OnInit, OnDestroy {
     filteredProducts: IProduct[] = [];
     products: IProduct[] = [];
 
-    constructor(private productService: ProductService) {}
+    constructor(private productService: ProductService) { }
 
     toggleImage(): void {
         this.isShowingImage = !this.isShowingImage;
@@ -43,7 +42,7 @@ export class ProductListComponent  implements OnInit, OnDestroy {
             },
             error: err => this.errorMsg = err
         });
-        
+
     }
 
     ngOnDestroy(): void {
@@ -53,7 +52,7 @@ export class ProductListComponent  implements OnInit, OnDestroy {
     performFilter(filterBy: string): IProduct[] {
         filterBy = filterBy.toLocaleLowerCase();
         return this.products.filter((product: IProduct) =>
-        product.productName.toLocaleLowerCase().includes(filterBy));
+            product.productName.toLocaleLowerCase().includes(filterBy));
     }
 
     onRatingClicked(message: string): void {
